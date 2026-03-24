@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  
+  <header class="header">
+    <h1>🎬 Movie Explorer</h1>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Favoritos</a>
+    </nav>
+  </header>
+
+  
+  <section class="hero">
+    <h2>Explora tus series favoritas</h2>
+    <input type="text" placeholder="Buscar series o películas..." id="searchInput">
+  </section>
+
+  
+  <section class="filters">
+    <div class="genres">
+      <button>Todos</button>
+      <button>Drama</button>
+      <button>Comedy</button>
+      <button>Action</button>
+      <button>Crime</button>
+    </div>
+
+    <div class="per-page">
+      Mostrar:
+      <select>
+        <option>10</option>
+        <option>20</option>
+        <option>50</option>
+      </select>
+    </div>
+  </section>
+
+  
+  <section class="history">
+    <h3>Búsquedas recientes</h3>
+    <ul id="historyList">
+      <li>Batman</li>
+      <li>Vikings</li>
+    </ul>
+  </section>
+
+  
+  <main id="movies-container">
+    <!-- Tarjetas dinámicas -->
+  </main>
+
+  
+  <section class="pagination">
+    <button>⬅ Anterior</button>
+    <span>Página 1</span>
+    <button>Siguiente ➡</button>
+  </section>
+  
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
