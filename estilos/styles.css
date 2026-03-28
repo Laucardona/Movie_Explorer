@@ -1,365 +1,290 @@
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #0f172a;
-    color: #fff;
-    transition: background 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0b0f1a;
+  color: white;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 
-.light-mode {
-    background-color: #f1f5f9;
-    color: #000;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #0b0f1a;
+  border-bottom: 1px solid #1f2937;
 }
 
-.light-mode header {
-    background-color: #e2e8f0;
+.logo {
+  color: #22c55e;
+  font-weight: bold;
+  font-size: 24px;
 }
 
-.light-mode .card {
-    background-color: #fff;
-    color: #000;
+.navbar nav a {
+  margin: 0 15px;
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.light-mode input {
-    background-color: #fff;
-    color: #000;
-}
-
-.light-mode button {
-    background-color: #cbd5f5;
-    color: #000;
-}
-
-.light-mode .pagination button {
-    background-color: #94a3b8;
-}
-
-.light-mode .card-overlay {
-    background: rgba(255,255,255,0.7);
+.navbar nav a:hover {
+  color: white;
 }
 
 
-header {
-    background-color: #1e293b;
-    padding: 20px;
-    text-align: center;
+.nav-right button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-header h1 {
-    margin-bottom: 10px;
+.btn-sub {
+  background: #22c55e;
+  color: black;
+  font-weight: bold;
 }
 
-
-.search-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.search-container input {
-    padding: 10px;
-    width: 250px;
-    border-radius: 8px;
-    border: none;
-    transition: all 0.3s ease;
-}
-
-.search-container input:focus {
-    outline: none;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px #38bdf8;
-}
-
-.search-container button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: #38bdf8;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.search-container button:hover {
-    background-color: #0ea5e9;
+.btn-login {
+  background: transparent;
+  color: white;
+  border: 1px solid #555;
 }
 
 
-.filters {
-    margin: 20px;
-    text-align: center;
-}
-
-.filters button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 20px;
-    background-color: #334155;
-    color: white;
-    cursor: pointer;
-}
-
-.filters button:hover {
-    background-color: #38bdf8;
-    color: black;
+#themeToggle {
+  background: transparent;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 }
 
 
-.movies-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
+.top-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.top-controls input {
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+  border: none;
+  transition: 0.3s;
+}
+
+.top-controls input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #22c55e;
+}
+
+.top-controls button {
+  padding: 10px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 30px;
 }
 
 
 .card {
-    position: relative;
-    background-color: #1e293b;
-    border-radius: 15px;
-    overflow: hidden;
-
-    
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.5s ease forwards;
-
-    
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-
-    
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
-
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
-
 
 .card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
 }
 
-
 .card img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.4s;
 }
 
 .card:hover img {
-    transform: scale(1.1);
-}
-
-
-.card-content {
-    padding: 15px;
-}
-
-.card h3 {
-    margin-bottom: 10px;
-}
-
-.card p {
-    font-size: 14px;
-    margin-bottom: 5px;
+  transform: scale(1.1);
 }
 
 
 .card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    background: rgba(0,0,0,0.7);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
 }
 
-.card:hover .card-overlay {
-    opacity: 1;
+.card-overlay h3 {
+  margin: 0;
 }
 
 
+.rating {
+  border: 1px solid #22c55e;
+  display: inline-block;
+  padding: 3px 8px;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+/* BOTONES CARD */
 .card-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
 }
 
-.card-buttons button {
-    padding: 8px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: transform 0.2s ease;
-}
-
-.card-buttons button:hover {
-    transform: scale(1.1);
+.card-buttons button,
+.card-buttons a {
+  padding: 6px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .btn-details {
-    background-color: #22c55e;
-    color: black;
+  background: #22c55e;
+  color: black;
 }
 
 .btn-fav {
-    background-color: #facc15;
-    color: black;
-}
-
-.btn-fav:active {
-    transform: scale(1.3);
+  background: gold;
 }
 
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 20px;
+  text-align: center;
+  padding: 20px;
 }
 
 .pagination button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #38bdf8;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.pagination button:hover {
-    transform: scale(1.1);
-}
-
-.pagination span {
-    font-weight: bold;
-}
-
-
-.limit-selector {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.limit-selector select {
-    padding: 5px;
-    border-radius: 5px;
-}
-
-
-.detail-container {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;
-    animation: fadeIn 0.5s ease;
-}
-
-.detail-container img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.detail-info {
-    margin-top: 20px;
-}
-
-.detail-info h2 {
-    margin-bottom: 10px;
-}
-
-
-.favorites-container {
-    padding: 20px;
-}
-
-
-.empty-message {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 18px;
-    animation: fadeIn 0.5s ease;
+  padding: 10px;
+  margin: 5px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
 
 .history {
-    margin: 20px;
-    text-align: center;
+  text-align: center;
 }
 
 .history button {
-    margin: 5px;
-    padding: 6px 10px;
-    border-radius: 10px;
-    border: none;
-    background-color: #475569;
-    color: white;
-    cursor: pointer;
+  margin: 5px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: #334155;
+  color: white;
+  cursor: pointer;
 }
 
 
-.loader {
-    border: 5px solid #1e293b;
-    border-top: 5px solid #38bdf8;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin: 50px auto;
+.light-mode {
+  background-color: #f1f5f9;
+  color: #0b0f1a;
 }
 
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.light-mode .navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #ccc;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.light-mode .navbar nav a {
+  color: #333;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.light-mode .navbar nav a:hover {
+  color: black;
+}
+
+
+.light-mode .btn-login {
+  border: 1px solid #ccc;
+  color: black;
+}
+
+
+.light-mode .top-controls input {
+  background: white;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+
+.light-mode .card {
+  background: white;
+}
+
+.light-mode .card-overlay {
+  background: linear-gradient(transparent, rgba(255,255,255,0.9));
+  color: black;
+}
+
+
+.light-mode .pagination button {
+  background: #22c55e;
+  color: black;
+}
+
+
+.light-mode .history button {
+  background-color: #cbd5f5;
+  color: black;
+}
+
+
+.light-mode #themeToggle {
+  color: black;
+  border: 1px solid #ccc;
 }
 
 
 @media (max-width: 768px) {
-    .search-container {
-        flex-direction: column;
-    }
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    .card img {
-        height: 250px;
-    }
+  .top-controls input {
+    width: 100%;
+  }
+
+  .card img {
+    height: 250px;
+  }
 }
