@@ -1,38 +1,37 @@
-import { getState } from "./state.js";
+import { toggleFavorite, getFavorites } from "./storage.js";
 
-export function renderShows(container) {
-    const { shows } = getState();
+const grid = document.getElementById("moviesGrid");
 
-    container.innerHTML = "";
+export function renderMovies(movies) {
+  if (!grid) return;
 
-    shows.forEach(show => {
-        const div = document.createElement("div");
+  grid.innerHTML = "";
 
-        div.innerHTML = `
-            <h3>${show.name}</h3>
-            <img src="${show.image?.medium || ''}" />
-            <button data-id="${show.id}">❤️ Favorito</button>
-        `;
+  const favs = getFavorites();
 
-        container.appendChild(div);
+  movies.forEach(m => {
+    const isFav = favs.some(f => f.id === m.id);
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = `
+      <img src="${m.image}">
+      <div class="card-overlay">
+        <h3>${m.title}</h3>
+        <div class="rating">⭐ ${m.rating}</div>
+
+        <div class="card-buttons">
+          <button class="btn-fav">${isFav ? "💛" : "🤍"}</button>
+        </div>
+      </div>
+    `;
+
+    card.querySelector(".btn-fav").addEventListener("click", () => {
+      toggleFavorite(m);
+      renderMovies(movies);
     });
-}
 
-export function renderFavorites(container, favorites) {
-    container.innerHTML = "";
-
-    favorites.forEach(show => {
-        const div = document.createElement("div");
-
-        div.innerHTML = `
-            <span>${show.name}</span>
-            <button data-id="${show.id}">❌</button>
-        `;
-
-        container.appendChild(div);
-    });
-}
-
-export function showMessage(msg) {
-    alert(msg);
+    grid.appendChild(card);
+  });
 }

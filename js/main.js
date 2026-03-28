@@ -1,33 +1,43 @@
-const grid = document.getElementById("moviesGrid");
-const toggleBtn = document.getElementById("themeToggle");
+import { getMovies } from "./service.js";
+import { renderMovies } from "./ui.js";
+import { state, setState } from "./state.js";
 
+const form = document.getElementById("searchForm");
+const input = document.getElementById("searchInput");
 
-if (localStorage.getItem("theme") === "light") {
-  document.body.classList.add("light-mode");
-  toggleBtn.textContent = "☀︎";
+async function loadMovies() {
+  try {
+    const movies = await getMovies(state.query);
+
+    console.log("PELÍCULAS:", movies); // 👈 para verificar
+
+    setState({ movies });
+
+    renderMovies(movies);
+
+  } catch (error) {
+    console.error("Error cargando películas:", error);
+  }
 }
 
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
+// 🔍 BUSCADOR
+function handleSearch(e) {
+  e.preventDefault();
 
-  const isLight = document.body.classList.contains("light-mode");
+  const query = input.value.trim();
 
-  localStorage.setItem("theme", isLight ? "light" : "dark");
-  toggleBtn.textContent = isLight ? "☀︎" : "⏾";
-});
+  setState({ query });
 
-
-function renderMovies() {
-  grid.innerHTML = "";
-
-  movies.forEach(m => {
-    grid.innerHTML += `
-      <div class="card">
-        <img src="${m.image}">
-        <h3>${m.title}</h3>
-      </div>
-    `;
-  });
+  loadMovies();
 }
 
-renderMovies();
+// 🚀 INICIO
+function init() {
+  if (form) {
+    form.addEventListener("submit", handleSearch);
+  }
+
+  loadMovies(); // carga inicial
+}
+
+init();

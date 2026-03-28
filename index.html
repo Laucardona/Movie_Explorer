@@ -3,38 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Películas App</title>
-  <link rel="stylesheet" href="/estilos/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ESTILOS -->
+  <link rel="stylesheet" href="./estilos/styles.css">
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="logo"> Movie Explorer</div>
 
-  <nav>
-    <a href="#">Inicio</a>
-    <a href="#">Populares</a>
-    <a href="#">Favoritos</a>
-  </nav>
+  <header class="navbar">
+    <div class="logo">Movie App</div>
 
-  <div class="nav-right">
-    <button class="btn-sub">SUSCRIBIRSE</button>
-    <button class="btn-login">INICIAR SESIÓN</button>
-    <button id="themeToggle">⏾</button>
-  </div>
-</header>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Populares</a>
+      <a href="#">Favoritos</a>
+    </nav>
 
-<section class="top-controls">
-  <input type="text" id="searchInput" placeholder="Buscar película...">
-  <button id="searchBtn">Buscar</button>
-</section>
+    <div class="nav-right">
+      <button class="btn-login">Login</button>
+      <button class="btn-sub">Suscribirse</button>
+      <!-- ID CORREGIDO -->
+      <button id="themeToggle">🌙</button>
+    </div>
+  </header>
 
-<div class="movies-grid" id="moviesGrid"></div>
+  
+  <section class="top-controls">
+    <form id="searchForm">
+      <input 
+        id="searchInput" 
+        type="text" 
+        placeholder="Buscar películas..."
+      />
+      <button type="submit">Buscar</button>
+    </form>
+  </section>
+  <main>
+    <div id="moviesGrid" class="movies-grid"></div>
+  </main>
 
-<div class="pagination">
-  <button id="prevBtn">Anterior</button>
-  <button id="nextBtn">Siguiente</button>
-</div>
+  
+  <footer class="footer">
+    <p style="text-align:center; padding:20px;">Hecho con ❤️</p>
+  </footer>
+  <script type="module" src="./js/main.js"></script>
 
-<script src="/js/main.js"></script>
 </body>
 </html>
