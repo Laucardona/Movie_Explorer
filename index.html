@@ -1,69 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Movie Explorer</title>
-  <link rel="stylesheet" href="/estilos/styles.css">
+  <link rel="stylesheet" href="estilos/styles.css">
 </head>
+
 <body>
 
-  
-  <header class="header">
-    <h1>🎬 Movie Explorer</h1>
+ 
+  <header class="navbar">
+    <div class="logo">Movies</div>
+
     <nav>
       <a href="#">Inicio</a>
-      <a href="#">Favoritos</a>
+      <a href="#">Cine</a>
+      <a href="#">Series</a>
+      <a href="#">Colecciones</a>
+      <a href="#">Festivales</a>
     </nav>
+
+    <div class="nav-right">
+      <button class="btn-sub">SUSCRIBIRSE</button>
+      <button class="btn-login">INICIAR SESIÓN</button>
+    </div>
   </header>
 
   
-  <section class="hero">
-    <h2>Explora tus series favoritas</h2>
-    <input type="text" placeholder="Buscar series o películas..." id="searchInput">
-  </section>
+  <section class="top-controls">
+    <input type="text" id="searchInput" placeholder="Buscar películas o series...">
+    <button id="searchBtn"></button>
 
-  
-  <section class="filters">
-    <div class="genres">
-      <button>Todos</button>
-      <button>Drama</button>
-      <button>Comedy</button>
-      <button>Action</button>
-      <button>Crime</button>
-    </div>
-
-    <div class="per-page">
-      Mostrar:
-      <select>
-        <option>10</option>
-        <option>20</option>
-        <option>50</option>
-      </select>
-    </div>
+    <select id="limitSelect">
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="50">50</option>
+    </select>
   </section>
 
   
   <section class="history">
     <h3>Búsquedas recientes</h3>
-    <ul id="historyList">
-      <li>Batman</li>
-      <li>Vikings</li>
-    </ul>
+    <div id="historyList"></div>
   </section>
 
-  
-  <main id="movies-container">
-   
-  </main>
+  <main id="movies-container" class="movies-grid"></main>
 
-  
+  <!-- PAGINACIÓN -->
   <section class="pagination">
-    <button>⬅ Anterior</button>
-    <span>Página 1</span>
-    <button>Siguiente ➡</button>
+    <button id="prevBtn">Atras</button>
+    <span id="pageInfo"></span>
+    <button id="nextBtn">Adelante</button>
   </section>
-  
-<script type="module" src="js/main.js"></script>
 
+  <script type="module" src="js/main.js"></script>
 </body>
+
 </html>
