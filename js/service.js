@@ -16,7 +16,6 @@ export async function getMovies(query = "") {
 
     const data = await res.json();
 
-    // 🔥 IMPORTANTE: TVMaze devuelve diferente estructura
     const shows = query ? data.map(d => d.show) : data;
 
     return shows.map(s => ({

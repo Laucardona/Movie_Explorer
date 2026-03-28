@@ -1,7 +1,8 @@
 export const state = {
   movies: [],
   page: 1,
-  query: ""
+  query: "",
+  itemsPerPage: 10 
 };
 
 export function setState(newState) {

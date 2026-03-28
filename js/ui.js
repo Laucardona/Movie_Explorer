@@ -19,10 +19,10 @@ export function renderMovies(movies) {
       <img src="${m.image}">
       <div class="card-overlay">
         <h3>${m.title}</h3>
-        <div class="rating">⭐ ${m.rating}</div>
+        <div class="rating"> ★ ${m.rating}</div>
 
         <div class="card-buttons">
-          <button class="btn-fav">${isFav ? "💛" : "🤍"}</button>
+          <button class="btn-fav">${isFav ? "❤︎" : "♡"}</button>
         </div>
       </div>
     `;
