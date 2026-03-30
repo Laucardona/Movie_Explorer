@@ -27,6 +27,7 @@ export function renderMovies(movies) {
       </div>
     `;
 
+
     card.querySelector(".btn-fav").addEventListener("click", () => {
       toggleFavorite(m);
       renderMovies(movies);

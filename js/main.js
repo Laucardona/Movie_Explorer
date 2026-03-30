@@ -1,6 +1,7 @@
 import { getMovies } from "./service.js";
 import { renderMovies } from "./ui.js";
 import { state, setState } from "./state.js";
+import { getFavorites } from "./storage.js";
 
 const form = document.getElementById("searchForm");
 const input = document.getElementById("searchInput");
@@ -111,3 +112,50 @@ function init() {
 }
 
 init();
+
+const btnInicio = document.getElementById("btnInicio");
+const btnPopulares = document.getElementById("btnPopulares");
+const btnFavoritos = document.getElementById("btnFavoritos");
+const themeToggle = document.getElementById("themeToggle");
+
+
+btnInicio.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  setState({ query: "", page: 1 });
+  loadMovies();
+});
+
+
+btnPopulares.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  setState({ query: "popular", page: 1 });
+  loadMovies();
+});
+
+
+btnFavoritos.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const favs = getFavorites();
+
+  renderMovies(favs);
+});
+
+let isLight = localStorage.getItem("theme") === "light";
+
+if (isLight) {
+  document.body.classList.add("light-mode");
+  themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  isLight = !isLight;
+
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+
+  themeToggle.textContent = isLight ? "☀️" : "🌙";
+});
